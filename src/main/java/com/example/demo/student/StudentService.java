@@ -1,4 +1,4 @@
-/* package com.example.demo.student;
+package com.example.demo.student;
 
 import java.util.List;
 import java.util.Objects;
@@ -68,4 +68,3 @@ public class StudentService {
     }
 
 }
- */
