@@ -30,8 +30,6 @@ public class StudentService {
             throw new IllegalStateException("email taken");
         }
         studentRepository.save(student);
-
-        // System.out.println(student);
     }
 
     public void deleteStudent(Long studentId) {
