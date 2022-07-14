@@ -30,7 +30,6 @@ public class StudentService {
             throw new IllegalStateException("email taken");
         }
         studentRepository.save(student);
-        // asfa
     }
 
     public void deleteStudent(Long studentId) {
