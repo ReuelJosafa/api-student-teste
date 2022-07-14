@@ -33,3 +33,22 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_REPO }}:latest
+          
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    
+    steps:
+      - name: Deploy to Digital Ocean droplet via SSH action
+        uses: appleboy/ssh-action@v0.1.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SERVER_SSH_KEY }}
+          script: |
+            docker ps
+            docker rm $(docker ps -q) -f
+            docker images
+            docker rmi kulibabarj/api-springboot
+            docker pull kulibabarj/api-springboot
+            docker run -d -p 80:8080 kulibabarj/api-springboot
