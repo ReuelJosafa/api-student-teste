@@ -36,7 +36,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: IMAGE_NAME:latest
+          tags: $IMAGE_NAME:latest
           
   deploy:
     runs-on: ubuntu-latest
