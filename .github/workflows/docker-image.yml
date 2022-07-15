@@ -50,11 +50,11 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SERVER_SSH_KEY }}
-          envs: IMAGE_NAME
+          envs: ${{ secrets.DOCKER_REPO }}
           script: |
             docker ps
             docker rm $(docker ps -q) -f
             docker images
-            docker rmi $IMAGE_NAME
-            docker pull $IMAGE_NAME
-            docker run -d -p 80:8080 kulibabarj/api-springboot
+            docker rmi ${{ secrets.DOCKER_REPO }}
+            docker pull ${{ secrets.DOCKER_REPO }}
+            docker run -d -p 80:8080 ${{ secrets.DOCKER_REPO }}
