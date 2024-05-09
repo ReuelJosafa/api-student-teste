@@ -1,1 +1,1 @@
-Aplicação inical de estudos do Spring Boot.
+Aplicação inicial contendo CRUD de estudantes para estudos do Spring Boot.
